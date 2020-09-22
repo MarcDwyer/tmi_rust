@@ -1,0 +1,1 @@
+fn parser(data: String) {}
