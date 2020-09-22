@@ -362,6 +362,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "irc_message"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ecff9a61289856be1096eda847f89c8785c96617c281f0665c1f4e30d89a4700"
+
+[[package]]
 name = "kernel32-sys"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -972,6 +978,7 @@ name = "tmi_rust"
 version = "0.1.0"
 dependencies = [
  "futures 0.3.5",
+ "irc_message",
  "websocket",
 ]
 

@@ -1,6 +1,7 @@
 use std::sync::mpsc::{channel, Receiver, RecvError, Sender};
 use std::thread;
 
+use irc_message::IrcMessage;
 use websocket::client::ClientBuilder;
 use websocket::{Message, OwnedMessage};
 
@@ -98,8 +99,19 @@ impl TwitchChat {
                             }
                         }
                     }
+                    OwnedMessage::Text(msg) => {
+                        println!("Raw: {}", msg);
+                        let m = &msg[..];
+                        let irc = match IrcMessage::parse_own(m) {
+                            Some(parsed) => parsed,
+                            None => continue,
+                        };
+                        println!("Parsed: {:?}", irc.command);
+                    }
                     // Say what we received
-                    _ => println!("Gamer: {:?}", message),
+                    _ => {
+                        println!("Gamer: {:?}", message);
+                    }
                 }
             }
         });

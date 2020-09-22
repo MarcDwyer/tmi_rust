@@ -1,19 +1,7 @@
 use std::env;
+mod parser;
 mod twitch_chat;
 
-// fn something(target: i32) -> String {
-//     let mut curr: Option<i32> = Some(0);
-//     loop {
-//         match curr {
-//             Some(n) if n == target => return format!("Target reached: {}", n),
-//             Some(n) => {
-//                 curr = Some(n + 1);
-//                 continue;
-//             }
-//             None => continue,
-//         }
-//     }
-// }
 fn main() {
     let client_id = env::var("client_id").unwrap();
     let oauth = env::var("oauth").unwrap();
